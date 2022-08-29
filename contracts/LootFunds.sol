@@ -14,7 +14,7 @@ import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 
-contract LockMyTokens {
+contract LootFunds {
 
     // Balances
     mapping(ERC20 => mapping(address => uint)) ERC20Balances;
