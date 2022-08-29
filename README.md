@@ -1,15 +1,5 @@
-# Basic Sample Hardhat Project
+# LootFunds
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
-
-Try running some of the following tasks:
-
-```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-node scripts/sample-script.js
-npx hardhat help
-```
+Lock your funds until you need it back. As simple as that.
+Choose a period of time you want to lock your funds, the amount, and we will keep it safe until unlock time.
+LootFunds is ensuring safely locking tokens using smart contract technology.
