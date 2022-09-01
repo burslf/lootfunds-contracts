@@ -1,123 +1,86 @@
 {
   "manifestVersion": "3.2",
   "admin": {
-    "address": "0x555C813A6980bE2fBe1db223f1037e5a04134b69",
-    "txHash": "0xf260322aa6b5b0d20d9ff74ec12219510599f7b3ee51e72ec8deabc61d5c9de1"
+    "address": "0x3F6B50DA0173e44dDbEe89f643CF3e7eFD4Ff010",
+    "txHash": "0x0f32ee98898a0a23d854ed703b7d820bfdefd66cd6b9a8c218cb0f9f8dd129ff"
   },
   "proxies": [
     {
-      "address": "0x57d3f85434578F5524200A044640784c2c4f2e8e",
-      "txHash": "0xe7d113ef4e5021b2d027f3c5bbd6db2b9b78f91ec458c4c48d2657ead647cee8",
+      "address": "0x5C3f51Ed6efBf0952be818bdEFF971Ff257A9B96",
+      "txHash": "0x21f78b5f8fbadc2c0f7b33ee88473e0dd89cd7e834925369dfdc766129f25720",
       "kind": "transparent"
     }
   ],
   "impls": {
-    "4e844217351cd2b59b54f071336af5bd3682b053bf64199eccfe2eaae0dec9a7": {
-      "address": "0x1f982eC877F4786CD12A0c37Ac59285dB233F43c",
-      "txHash": "0x06a06a9334200801c03e38ad719aa64f7472980c6d3a46f81a652e5ccb12acda",
+    "2cbfd32841f6c561e2aecb32c565d09ddf9362d7fc962062e71706a82b95f9dd": {
+      "address": "0xbCca9c9f6d5906F8e4aB33E308caf9F41CD35696",
+      "txHash": "0x9682432aec7c4ea1d06d791eb1c0282b7c70c70d58bcfa2b17ba69c712691cb8",
       "layout": {
         "storage": [
           {
-            "label": "ERC20Balances",
+            "label": "_initialized",
             "offset": 0,
             "slot": "0",
-            "type": "t_mapping(t_contract(ERC20)585,t_mapping(t_address,t_uint256))",
-            "contract": "LockMyTokens",
-            "src": "contracts/LockMyTokens.sol:20"
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:62",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:67"
+          },
+          {
+            "label": "ERC20Balances",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_mapping(t_contract(ERC20)979,t_mapping(t_address,t_uint256))",
+            "contract": "LootFunds",
+            "src": "contracts/LootFunds.sol:21"
           },
           {
             "label": "lockedBalances",
             "offset": 0,
-            "slot": "1",
-            "type": "t_mapping(t_contract(ERC20)585,t_mapping(t_address,t_uint256))",
-            "contract": "LockMyTokens",
-            "src": "contracts/LockMyTokens.sol:23"
+            "slot": "2",
+            "type": "t_mapping(t_contract(ERC20)979,t_mapping(t_address,t_uint256))",
+            "contract": "LootFunds",
+            "src": "contracts/LootFunds.sol:24"
           },
           {
             "label": "unboundingTime",
             "offset": 0,
-            "slot": "2",
-            "type": "t_mapping(t_contract(ERC20)585,t_mapping(t_address,t_uint256))",
-            "contract": "LockMyTokens",
-            "src": "contracts/LockMyTokens.sol:24"
-          }
-        ],
-        "types": {
-          "t_address": {
-            "label": "address",
-            "numberOfBytes": "20"
-          },
-          "t_contract(ERC20)585": {
-            "label": "contract ERC20",
-            "numberOfBytes": "20"
-          },
-          "t_mapping(t_address,t_uint256)": {
-            "label": "mapping(address => uint256)",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_contract(ERC20)585,t_mapping(t_address,t_uint256))": {
-            "label": "mapping(contract ERC20 => mapping(address => uint256))",
-            "numberOfBytes": "32"
-          },
-          "t_uint256": {
-            "label": "uint256",
-            "numberOfBytes": "32"
-          }
-        }
-      }
-    },
-    "cd04a550d818ed23cca88f4fd80b363772dbcbdc1e1a54b59966795126c567a5": {
-      "address": "0x8a3AD7210307C12C7C0537B2db75F611A3C534D9",
-      "txHash": "0xc8678e106908895340b23d8decbccc744a08fdaa4a7e9498ef0bbe7e1024ed2a",
-      "layout": {
-        "storage": [
-          {
-            "label": "ERC20Balances",
-            "offset": 0,
-            "slot": "0",
-            "type": "t_mapping(t_contract(ERC20)585,t_mapping(t_address,t_uint256))",
-            "contract": "LockMyTokens",
-            "src": "contracts/LockMyTokens.sol:20"
-          },
-          {
-            "label": "lockedBalances",
-            "offset": 0,
-            "slot": "1",
-            "type": "t_mapping(t_contract(ERC20)585,t_mapping(t_address,t_uint256))",
-            "contract": "LockMyTokens",
-            "src": "contracts/LockMyTokens.sol:23"
-          },
-          {
-            "label": "unboundingTime",
-            "offset": 0,
-            "slot": "2",
-            "type": "t_mapping(t_contract(ERC20)585,t_mapping(t_address,t_uint256))",
-            "contract": "LockMyTokens",
-            "src": "contracts/LockMyTokens.sol:24"
+            "slot": "3",
+            "type": "t_mapping(t_contract(ERC20)979,t_mapping(t_address,t_uint256))",
+            "contract": "LootFunds",
+            "src": "contracts/LootFunds.sol:25"
           },
           {
             "label": "nativeBalances",
             "offset": 0,
-            "slot": "3",
+            "slot": "4",
             "type": "t_mapping(t_address,t_uint256)",
-            "contract": "LockMyTokens",
-            "src": "contracts/LockMyTokens.sol:27"
+            "contract": "LootFunds",
+            "src": "contracts/LootFunds.sol:28"
           },
           {
             "label": "nativeLockedBalances",
             "offset": 0,
-            "slot": "4",
+            "slot": "5",
             "type": "t_mapping(t_address,t_uint256)",
-            "contract": "LockMyTokens",
-            "src": "contracts/LockMyTokens.sol:28"
+            "contract": "LootFunds",
+            "src": "contracts/LootFunds.sol:29"
           },
           {
             "label": "nativeUnboundingTime",
             "offset": 0,
-            "slot": "5",
+            "slot": "6",
             "type": "t_mapping(t_address,t_uint256)",
-            "contract": "LockMyTokens",
-            "src": "contracts/LockMyTokens.sol:29"
+            "contract": "LootFunds",
+            "src": "contracts/LootFunds.sol:30"
           }
         ],
         "types": {
@@ -125,7 +88,11 @@
             "label": "address",
             "numberOfBytes": "20"
           },
-          "t_contract(ERC20)585": {
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_contract(ERC20)979": {
             "label": "contract ERC20",
             "numberOfBytes": "20"
           },
@@ -133,13 +100,17 @@
             "label": "mapping(address => uint256)",
             "numberOfBytes": "32"
           },
-          "t_mapping(t_contract(ERC20)585,t_mapping(t_address,t_uint256))": {
+          "t_mapping(t_contract(ERC20)979,t_mapping(t_address,t_uint256))": {
             "label": "mapping(contract ERC20 => mapping(address => uint256))",
             "numberOfBytes": "32"
           },
           "t_uint256": {
             "label": "uint256",
             "numberOfBytes": "32"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
           }
         }
       }

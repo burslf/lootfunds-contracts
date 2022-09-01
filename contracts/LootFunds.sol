@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.4;
+pragma solidity >=0.8.0;
 
 
 /**
@@ -12,9 +12,10 @@ pragma solidity ^0.8.4;
 
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 
 
-contract LootFunds {
+contract LootFunds is Initializable {
 
     // Balances
     mapping(ERC20 => mapping(address => uint)) ERC20Balances;
@@ -41,6 +42,9 @@ contract LootFunds {
     event NativeLockedTransferReceived(address _receivAddr, uint _amount, uint _unboundingTime);
     event NativeLockedTransferSent(address _receivAddr, uint _amount);
     
+    function initialize() initializer public {
+    }
+
     function walletBalance(ERC20 _tokenAddress, address _userAddress) public view returns (uint _available, uint _locked) {
         return (ERC20Balances[_tokenAddress][_userAddress], lockedBalances[_tokenAddress][_userAddress]);
     }
@@ -69,8 +73,8 @@ contract LootFunds {
         require(_amount <= lockedBalances[_token][msg.sender], "Insufficient funds");
         require(unboundingTime[_token][msg.sender] <= block.timestamp, "Unbounding time not finished.");
         
-        IERC20(_token).transfer(msg.sender, _amount);
         lockedBalances[_token][msg.sender] -= _amount;
+        IERC20(_token).transfer(msg.sender, _amount);
 
         emit LockedTransferSent(_destAddr, _amount);
     }
@@ -88,8 +92,8 @@ contract LootFunds {
     function withdrawERC20(ERC20 _token, uint _amount, address payable _destAddr) public {
         require(_amount <= ERC20Balances[_token][msg.sender], "Insufficient funds");
         
-        IERC20(_token).transfer(msg.sender, _amount);
         ERC20Balances[_token][msg.sender] -= _amount;
+        IERC20(_token).transfer(msg.sender, _amount);
 
         emit TransferSent(_destAddr, _amount);
     }
@@ -105,9 +109,8 @@ contract LootFunds {
     function withdrawNative(uint _amount, address payable _destAddr) public {
         require(_amount <= nativeBalances[msg.sender], "Insufficient funds");
         
-        _destAddr.transfer(_amount);
-
         nativeBalances[msg.sender] -= _amount;
+        _destAddr.transfer(_amount);
 
         emit NativeTransferSent(_destAddr, _amount);
     }
@@ -127,9 +130,8 @@ contract LootFunds {
         require(_amount <= nativeLockedBalances[msg.sender], "Insufficient funds");
         require(nativeUnboundingTime[msg.sender] <= block.timestamp, "Unbounding time not finished.");
 
-        _destAddr.transfer(_amount);
-
         nativeLockedBalances[msg.sender] -= _amount;
+        _destAddr.transfer(_amount);
 
         emit NativeLockedTransferSent(_destAddr, _amount);
     }
